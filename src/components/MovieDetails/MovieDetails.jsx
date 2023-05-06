@@ -59,48 +59,50 @@ const MovieDetails = () => {
   if (status === 'resolved') {
     return (
       <StyledMovieDetails>
-        {movie && (
-          <>
-            <StyledMovieDetailsGoBack to={backLink.current}>
-              Go back
-            </StyledMovieDetailsGoBack>
-            <StyledMovieDetailsImg
-              src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
-              alt={movie.title}
-            />
-            <StyledMovieDetailsH1>
-              {movie.title} ({movie.release_date.slice(0, 4)})
-            </StyledMovieDetailsH1>
-            <StyledMovieDetailsP>
-              User Score: {movie.popularity}
-            </StyledMovieDetailsP>
-            <StyledMovieDetailsH2>Overview</StyledMovieDetailsH2>
-            <StyledMovieDetailsP>{movie.overview}</StyledMovieDetailsP>
-            <StyledMovieDetailsH3>Genres</StyledMovieDetailsH3>
-            <StyledMovieDetailsUl>
-              {movie.genres.map(genre => (
-                <StyledMovieDetailsLi key={genre.id}>
-                  {genre.name}
-                </StyledMovieDetailsLi>
-              ))}
-            </StyledMovieDetailsUl>
-            <StyledMovieDetailsH3>Additional information</StyledMovieDetailsH3>
-            <StyledMovieDetailsUl>
-              <StyledMovieDetailsLi>
-                <StyledMovieDetailsLink to="cast">Cast</StyledMovieDetailsLink>
+        <>
+          <StyledMovieDetailsGoBack to={backLink.current}>
+            Go back
+          </StyledMovieDetailsGoBack>
+          <StyledMovieDetailsImg
+            src={
+              movie.poster_path === null
+                ? 'https://www.publicdomainpictures.net/pictures/280000/velka/not-found-image-15383864787lu.jpg'
+                : `https://image.tmdb.org/t/p/w500${movie.poster_path}`
+            }
+            alt={movie.title}
+          />
+          <StyledMovieDetailsH1>
+            {movie.title} ({movie.release_date.slice(0, 4)})
+          </StyledMovieDetailsH1>
+          <StyledMovieDetailsP>
+            User Score: {movie.popularity}
+          </StyledMovieDetailsP>
+          <StyledMovieDetailsH2>Overview</StyledMovieDetailsH2>
+          <StyledMovieDetailsP>{movie.overview}</StyledMovieDetailsP>
+          <StyledMovieDetailsH3>Genres</StyledMovieDetailsH3>
+          <StyledMovieDetailsUl>
+            {movie.genres.map(genre => (
+              <StyledMovieDetailsLi key={genre.id}>
+                {genre.name}
               </StyledMovieDetailsLi>
+            ))}
+          </StyledMovieDetailsUl>
+          <StyledMovieDetailsH3>Additional information</StyledMovieDetailsH3>
+          <StyledMovieDetailsUl>
+            <StyledMovieDetailsLi>
+              <StyledMovieDetailsLink to="cast">Cast</StyledMovieDetailsLink>
+            </StyledMovieDetailsLi>
 
-              <StyledMovieDetailsLi>
-                <StyledMovieDetailsLink to="reviews">
-                  Reviews
-                </StyledMovieDetailsLink>
-              </StyledMovieDetailsLi>
-            </StyledMovieDetailsUl>
-            <Suspense fallback={<Loader />}>
-              <Outlet />
-            </Suspense>
-          </>
-        )}
+            <StyledMovieDetailsLi>
+              <StyledMovieDetailsLink to="reviews">
+                Reviews
+              </StyledMovieDetailsLink>
+            </StyledMovieDetailsLi>
+          </StyledMovieDetailsUl>
+          <Suspense fallback={<Loader />}>
+            <Outlet />
+          </Suspense>
+        </>
       </StyledMovieDetails>
     );
   }

@@ -27,6 +27,7 @@ export const StyledMovieInput = styled.input`
         outline: none;
         border-color: #0077FF;
     }
+    box-shadow: 0 0 10px rgba(0,0,0,0.5);
 `;
 
 export const StyledMovieButton = styled.button`
@@ -47,6 +48,7 @@ export const StyledMovieButton = styled.button`
         outline: none;
         border-color: #006FE6;
     }
+    box-shadow: 0 0 10px rgba(0,0,0,0.5);
 `;
 
 export const StyledMovieUl = styled.ul`
@@ -62,20 +64,26 @@ export const StyledMovieUl = styled.ul`
 export const StyledMovieLi = styled.li`
     display: flex;
     flex-direction: column;
-    margin-bottom: 1rem;
-    margin-right: 1rem;
+    margin-bottom: 2rem;
+    margin-right: 2rem;
     text-decoration: none;
     color: black;
     font-size: 1.2rem;
    width: 200px;
+    height: 370px;
    font-size: 1.2rem;
    font-weight: bold;
+    text-align: center;
+    box-shadow: 0 0 10px rgba(0,0,0,0.5);
+    border-radius: 4px;
 `;
 
 export const StyledMovieImg = styled.img`
     width: 200px;
-    height: auto;
+    height: 300px;
     margin-bottom: 0.5rem;
+    border-radius: 4px;
+    border-bottom: 1px solid #ccc;
 `;
 
 export const StyledMovieA = styled.a`

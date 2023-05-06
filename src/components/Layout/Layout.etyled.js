@@ -6,15 +6,17 @@ export const StyledLayoutHeader = styled.header`
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0 1rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
     height: 5rem;
-    background-color: #fff;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    background-color: orange;
+    box-shadow: 0 0 10px rgba(0,0,0,0.5);
 `;
 
 export const StyledLayoutNav = styled.nav`
     display: flex;
     align-items: center;
+    height: 100%;
 `;
 
 export const StyledNavLink = styled(NavLink)`
@@ -25,6 +27,7 @@ export const StyledNavLink = styled(NavLink)`
   font-size: 1.2rem;
   &.active {
     color: red;
+    border-bottom: 1px solid red;
   }
 `;
 

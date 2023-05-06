@@ -54,16 +54,14 @@ const Reviews = () => {
   if (status === 'resolved') {
     return (
       <>
-        {reviews && (
-          <StyledReviews>
-            {reviews.map(({ id, author, content }) => (
-              <StyledReviewsLi key={id}>
-                <StyledReviewsH3>{author}</StyledReviewsH3>
-                <StyledReviewsP>{content}</StyledReviewsP>
-              </StyledReviewsLi>
-            ))}
-          </StyledReviews>
-        )}
+        <StyledReviews>
+          {reviews.map(({ id, author, content }) => (
+            <StyledReviewsLi key={id}>
+              <StyledReviewsH3>{author}</StyledReviewsH3>
+              <StyledReviewsP>{content}</StyledReviewsP>
+            </StyledReviewsLi>
+          ))}
+        </StyledReviews>
       </>
     );
   }

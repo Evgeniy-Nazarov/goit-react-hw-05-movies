@@ -55,20 +55,22 @@ const Cast = () => {
   if (status === 'resolved') {
     return (
       <>
-        {cast && (
-          <StyledCast>
-            {cast.map(({ id, profile_path, name, character }) => (
-              <StyledCastLi key={id}>
-                <StyledCastImg
-                  src={`https://image.tmdb.org/t/p/w200${profile_path}`}
-                  alt={name}
-                />
-                <StyledCastH3>{name}</StyledCastH3>
-                <StyledCastP>Character: {character}</StyledCastP>
-              </StyledCastLi>
-            ))}
-          </StyledCast>
-        )}
+        <StyledCast>
+          {cast.map(({ id, profile_path, name, character }) => (
+            <StyledCastLi key={id}>
+              <StyledCastImg
+                src={
+                  profile_path
+                    ? `https://image.tmdb.org/t/p/w500/${profile_path}`
+                    : 'https://www.publicdomainpictures.net/pictures/280000/velka/not-found-image-15383864787lu.jpg'
+                }
+                alt={name}
+              />
+              <StyledCastH3>{name}</StyledCastH3>
+              <StyledCastP>Character: {character}</StyledCastP>
+            </StyledCastLi>
+          ))}
+        </StyledCast>
       </>
     );
   }

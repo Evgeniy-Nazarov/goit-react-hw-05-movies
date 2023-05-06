@@ -110,7 +110,11 @@ const Movies = () => {
             <StyledMovieUl>
               <StyledMovieLi key={movie.id}>
                 <StyledMovieImg
-                  src={`https://image.tmdb.org/t/p/w200${movie.poster_path}`}
+                  src={
+                    movie.poster_path
+                      ? `https://image.tmdb.org/t/p/w500/${movie.poster_path}`
+                      : 'https://www.publicdomainpictures.net/pictures/280000/velka/not-found-image-15383864787lu.jpg'
+                  }
                   alt={movie.title}
                 />
                 <StyledMovieLink

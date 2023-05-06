@@ -32,8 +32,6 @@ export const StyledMovieDetailsGoBack = styled(Link)`
 
 export const StyledMovieDetailsImg = styled.img`
     display: block;
-    width: 100%;
-    max-width: 300px;
     margin-bottom: 1rem;
 `;
 
@@ -79,9 +77,6 @@ export const StyledMovieDetailsLi = styled.li`
     text-decoration: none;
     color: black;
     font-size: 1.2rem;
-    &:hover {
-        color: red;
-    }
 `;
 
 export const StyledMovieDetailsLink = styled(Link)`
@@ -89,8 +84,9 @@ export const StyledMovieDetailsLink = styled(Link)`
     flex-direction: column;
     margin-bottom: 1rem;
     text-decoration: none;
-    color: black;
+    color: blue ;
     font-size: 1.2rem;
+    font-weight: bold;
     &:hover {
         color: red;
     }
