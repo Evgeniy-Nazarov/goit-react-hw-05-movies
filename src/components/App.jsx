@@ -5,8 +5,8 @@ import Reviews from './Reviews/Reviews';
 import { lazy } from 'react';
 import MovieDetails from './MovieDetails/MovieDetails';
 
-const Home = lazy(() => import('../pages/Home'));
-const Movies = lazy(() => import('../pages/Movies'));
+const Home = lazy(() => import('../pages/Home/Home'));
+const Movies = lazy(() => import('../pages/Movies/Movies'));
 
 export const App = () => {
   return (

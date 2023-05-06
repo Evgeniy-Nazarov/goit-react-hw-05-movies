@@ -2,37 +2,19 @@ import fetchFilmDetails from 'components/API/FetchFilmsDetails';
 import { Loader } from 'components/Loader/Loader';
 import { Report } from 'notiflix';
 import { Suspense, useEffect, useRef, useState } from 'react';
-import { Link, Outlet, useLocation, useParams } from 'react-router-dom';
-import styled from 'styled-components';
-
-const Styledink = styled(Link)`
-  display: flex;
-  flex-direction: column;
-  margin-bottom: 1rem;
-  text-decoration: none;
-  color: black;
-  font-size: 1.2rem;
-  &:hover {
-    color: red;
-  }
-`;
-
-const StyledContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: left;
-  margin-left: 1rem;
-  margin-bottom: 1rem;
-  text-decoration: none;
-  color: black;
-  font-size: 1.2rem;
-`;
-
-const StyledImg = styled.img`
-  width: 300px;
-  height: 400px;
-  margin-bottom: 1rem;
-`;
+import { Outlet, useLocation, useParams } from 'react-router-dom';
+import {
+  StyledMovieDetails,
+  StyledMovieDetailsGoBack,
+  StyledMovieDetailsH1,
+  StyledMovieDetailsH2,
+  StyledMovieDetailsH3,
+  StyledMovieDetailsImg,
+  StyledMovieDetailsLi,
+  StyledMovieDetailsLink,
+  StyledMovieDetailsP,
+  StyledMovieDetailsUl,
+} from './StyledMovieLink.Styled';
 
 const MovieDetails = () => {
   const { movieId } = useParams();
@@ -76,42 +58,50 @@ const MovieDetails = () => {
   }
   if (status === 'resolved') {
     return (
-      <StyledContainer>
+      <StyledMovieDetails>
         {movie && (
           <>
-            <Styledink to={backLink.current}>Go back</Styledink>
-            <StyledImg
+            <StyledMovieDetailsGoBack to={backLink.current}>
+              Go back
+            </StyledMovieDetailsGoBack>
+            <StyledMovieDetailsImg
               src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
               alt={movie.title}
             />
-            <h1>
+            <StyledMovieDetailsH1>
               {movie.title} ({movie.release_date.slice(0, 4)})
-            </h1>
-            <p>User Score: {movie.popularity}</p>
-            <h2>Overview</h2>
-            <p>{movie.overview}</p>
-            <h3>Genres</h3>
-            <ul>
+            </StyledMovieDetailsH1>
+            <StyledMovieDetailsP>
+              User Score: {movie.popularity}
+            </StyledMovieDetailsP>
+            <StyledMovieDetailsH2>Overview</StyledMovieDetailsH2>
+            <StyledMovieDetailsP>{movie.overview}</StyledMovieDetailsP>
+            <StyledMovieDetailsH3>Genres</StyledMovieDetailsH3>
+            <StyledMovieDetailsUl>
               {movie.genres.map(genre => (
-                <li key={genre.id}>{genre.name}</li>
+                <StyledMovieDetailsLi key={genre.id}>
+                  {genre.name}
+                </StyledMovieDetailsLi>
               ))}
-            </ul>
-            <h3>Additional information</h3>
-            <ul>
-              <li>
-                <Link to="cast">Cast</Link>
-              </li>
+            </StyledMovieDetailsUl>
+            <StyledMovieDetailsH3>Additional information</StyledMovieDetailsH3>
+            <StyledMovieDetailsUl>
+              <StyledMovieDetailsLi>
+                <StyledMovieDetailsLink to="cast">Cast</StyledMovieDetailsLink>
+              </StyledMovieDetailsLi>
 
-              <li>
-                <Link to="reviews">Reviews</Link>
-              </li>
-            </ul>
+              <StyledMovieDetailsLi>
+                <StyledMovieDetailsLink to="reviews">
+                  Reviews
+                </StyledMovieDetailsLink>
+              </StyledMovieDetailsLi>
+            </StyledMovieDetailsUl>
             <Suspense fallback={<Loader />}>
               <Outlet />
             </Suspense>
           </>
         )}
-      </StyledContainer>
+      </StyledMovieDetails>
     );
   }
 };

@@ -2,7 +2,17 @@ import fetchMovies from 'components/API/FetchMovies';
 import { Loader } from 'components/Loader/Loader';
 import { Report } from 'notiflix';
 import { useMemo, useState } from 'react';
-import { Link, Outlet, useLocation, useSearchParams } from 'react-router-dom';
+import { Outlet, useLocation, useSearchParams } from 'react-router-dom';
+import {
+  StyledMovieButton,
+  StyledMovieH1,
+  StyledMovieImg,
+  StyledMovieInput,
+  StyledMovieLi,
+  StyledMovieLink,
+  StyledMovieUl,
+  StyledMovies,
+} from './Movies.Styled';
 
 const Movies = () => {
   const [movies, setMovies] = useState(null);
@@ -55,16 +65,16 @@ const Movies = () => {
 
   if (status === 'idle') {
     return (
-      <div>
-        <h1>Movies</h1>
-        <input
+      <StyledMovies>
+        <StyledMovieH1>Movies</StyledMovieH1>
+        <StyledMovieInput
           type="text"
           value={searchQuery || ''}
           onChange={e => updateQuery(e.target.value || undefined)}
         />
-        <button onClick={searchMovies}>Search</button>
+        <StyledMovieButton onClick={searchMovies}>Search</StyledMovieButton>
         <Outlet />
-      </div>
+      </StyledMovies>
     );
   }
   if (status === 'pending') {
@@ -72,43 +82,48 @@ const Movies = () => {
   }
   if (status === 'rejected') {
     return (
-      <div>
-        <h1>Movies</h1>
-        <input
+      <StyledMovies>
+        <StyledMovieH1>Movies</StyledMovieH1>
+        <StyledMovieInput
           type="text"
           value={searchQuery || ''}
           onChange={e => updateQuery(e.target.value || undefined)}
         />
-        <button onClick={searchMovies}>Search</button>
+        <StyledMovieButton onClick={searchMovies}>Search</StyledMovieButton>
         <h2>{error}</h2>
         <Outlet />
-      </div>
+      </StyledMovies>
     );
   }
   if (status === 'resolved') {
     return (
-      <div>
-        <h1>Movies</h1>
-        <input
+      <StyledMovies>
+        <StyledMovieH1>Movies</StyledMovieH1>
+        <StyledMovieInput
           type="text"
           value={searchQuery || ''}
           onChange={e => updateQuery(e.target.value || undefined)}
         />
-        <button onClick={searchMovies}>Search</button>
+        <StyledMovieButton onClick={searchMovies}>Search</StyledMovieButton>
         {filteredMovies &&
           movies.map(movie => (
-            <li key={movie.id}>
-              <img
-                src={`https://image.tmdb.org/t/p/w200${movie.poster_path}`}
-                alt={movie.title}
-              />
-              <Link to={`/movies/${movie.id}`} state={{ from: location }}>
-                {movie.title}
-              </Link>
-            </li>
+            <StyledMovieUl>
+              <StyledMovieLi key={movie.id}>
+                <StyledMovieImg
+                  src={`https://image.tmdb.org/t/p/w200${movie.poster_path}`}
+                  alt={movie.title}
+                />
+                <StyledMovieLink
+                  to={`/movies/${movie.id}`}
+                  state={{ from: location }}
+                >
+                  {movie.title}
+                </StyledMovieLink>
+              </StyledMovieLi>
+            </StyledMovieUl>
           ))}
         <Outlet />
-      </div>
+      </StyledMovies>
     );
   }
 };

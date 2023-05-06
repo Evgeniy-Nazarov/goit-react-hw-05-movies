@@ -1,20 +1,8 @@
 import fetchFilmsToday from 'components/API/API';
 import { Loader } from 'components/Loader/Loader';
 import { useEffect, useState } from 'react';
-import { Link, useLocation } from 'react-router-dom';
-import styled from 'styled-components';
-
-const Styledink = styled(Link)`
-  display: flex;
-  flex-direction: column;
-  margin-bottom: 1rem;
-  text-decoration: none;
-  color: black;
-  font-size: 1.2rem;
-  &:hover {
-    color: red;
-  }
-`;
+import { useLocation } from 'react-router-dom';
+import Styledink from './Home.styled';
 
 const Home = () => {
   const [movies, setmovies] = useState([]);

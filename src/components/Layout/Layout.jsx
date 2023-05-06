@@ -1,33 +1,27 @@
 import { Loader } from 'components/Loader/Loader';
 import { Suspense } from 'react';
-import { NavLink, Outlet } from 'react-router-dom';
-import styled from 'styled-components';
-
-const StyledNavLink = styled(NavLink)`
-  color: black;
-  text-decoration: none;
-  margin-right: 1rem;
-  font-weight: bold;
-  font-size: 1.2rem;
-  &.active {
-    color: red;
-  }
-`;
+import { Outlet } from 'react-router-dom';
+import {
+  StyledLayoutHeader,
+  StyledLayoutMain,
+  StyledLayoutNav,
+  StyledNavLink,
+} from './Layout.etyled';
 
 const Layout = () => {
   return (
     <>
-      <header>
-        <nav>
+      <StyledLayoutHeader>
+        <StyledLayoutNav>
           <StyledNavLink to="">Home</StyledNavLink>
           <StyledNavLink to="/movies">Movies</StyledNavLink>
-        </nav>
-      </header>
-      <main>
+        </StyledLayoutNav>
+      </StyledLayoutHeader>
+      <StyledLayoutMain>
         <Suspense fallback={<Loader />}>
           <Outlet />
         </Suspense>
-      </main>
+      </StyledLayoutMain>
     </>
   );
 };

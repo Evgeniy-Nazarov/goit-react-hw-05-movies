@@ -1,6 +1,13 @@
 import fetchMovieCast from 'components/API/FetchMovieCast';
 import { Loader } from 'components/Loader/Loader';
 import { Report } from 'notiflix';
+import {
+  StyledCast,
+  StyledCastH3,
+  StyledCastImg,
+  StyledCastLi,
+  StyledCastP,
+} from './Cast.Styled';
 const { useState, useEffect } = require('react');
 const { useParams } = require('react-router-dom');
 
@@ -49,18 +56,18 @@ const Cast = () => {
     return (
       <>
         {cast && (
-          <ul>
+          <StyledCast>
             {cast.map(({ id, profile_path, name, character }) => (
-              <li key={id}>
-                <img
+              <StyledCastLi key={id}>
+                <StyledCastImg
                   src={`https://image.tmdb.org/t/p/w200${profile_path}`}
                   alt={name}
                 />
-                <p>{name}</p>
-                <p>Character: {character}</p>
-              </li>
+                <StyledCastH3>{name}</StyledCastH3>
+                <StyledCastP>Character: {character}</StyledCastP>
+              </StyledCastLi>
             ))}
-          </ul>
+          </StyledCast>
         )}
       </>
     );

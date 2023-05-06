@@ -3,6 +3,12 @@ import { Loader } from 'components/Loader/Loader';
 import { Report } from 'notiflix';
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
+import {
+  StyledReviews,
+  StyledReviewsH3,
+  StyledReviewsLi,
+  StyledReviewsP,
+} from './Reviews.Styled';
 
 const Reviews = () => {
   const { movieId } = useParams();
@@ -49,14 +55,14 @@ const Reviews = () => {
     return (
       <>
         {reviews && (
-          <ul>
+          <StyledReviews>
             {reviews.map(({ id, author, content }) => (
-              <li key={id}>
-                <h3>{author}</h3>
-                <p>{content}</p>
-              </li>
+              <StyledReviewsLi key={id}>
+                <StyledReviewsH3>{author}</StyledReviewsH3>
+                <StyledReviewsP>{content}</StyledReviewsP>
+              </StyledReviewsLi>
             ))}
-          </ul>
+          </StyledReviews>
         )}
       </>
     );
